@@ -47,6 +47,47 @@ janjian
     })
 ```
 ## Promise Chainig
+```
+var a = new Promise(function(resolve, reject){
+  setTimeout(function(){
+      if(false) {
+        resolve('resolve a')
+      }else{
+        reject(new Error('reject a'))
+      }
+  }, 2000)
+})
+
+a.then(function(value){
+  return value +" is true" 
+}).then(function(value){
+  console.log(value)
+})
+```
 ## promise all
-## promise in looping
-## promise race
+Menggabungkan lebih dari 1 Promise ke dalam bentruk array
+```
+  var a = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        if(true) {
+          resolve('resolve a')
+        }else{
+          reject('reject a')
+        }
+    }, 2000)
+  })
+
+  var b = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        if(true) {
+          resolve('resolve b')
+        }else{
+          reject('reject b')
+        }
+    }, 5000)
+  })
+
+  Promise.all([a, b]).then(value => {
+    console.log(value)
+  })
+```
